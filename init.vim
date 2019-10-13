@@ -124,19 +124,19 @@ set ignorecase
     "endif
   
   "if its mac or linux and in cli mode, map the alt keys  
-  if (g:os == 'osx' || g:os == "Linux") && !g:gui
-        exe "set <M-z>=\<Esc>z"
-        exe "set <M-j>=\<Esc>j"
-        exe "set <M-k>=\<Esc>k"
-        exe "set <M-r>=\<Esc>r"
-        exe "set <M-b>=\<Esc>b"
-        exe "set <M-l>=\<Esc>l"
-        exe "set <M-h>=\<Esc>h"
-        exe "set <M-m>=\<Esc>m"
-        exe "set <M-\\>=\<Esc>\\"
-        exe "set <M-w>=\<Esc>w"
-        set ttimeoutlen=50
-  endif
+  "if (g:os == 'osx' || g:os == "Linux") && !g:gui
+        "exe "set <M-z>=\<Esc>z"
+        "exe "set <M-j>=\<Esc>j"
+        "exe "set <M-k>=\<Esc>k"
+        "exe "set <M-r>=\<Esc>r"
+        "exe "set <M-b>=\<Esc>b"
+        "exe "set <M-l>=\<Esc>l"
+        "exe "set <M-h>=\<Esc>h"
+        "exe "set <M-m>=\<Esc>m"
+        "exe "set <M-\\>=\<Esc>\\"
+        "exe "set <M-w>=\<Esc>w"
+        "set ttimeoutlen=50
+  "endif
 
 "########## Custom Key Mappings ########## 
   "########## Leader Key ########## 
@@ -181,13 +181,14 @@ set ignorecase
     xnoremap <silent> <A-j> :<C-u>call MoveVisualDown()<CR>
     nmap <silent> <C-Up> <A-k>
     nmap <silent> <C-Down> <A-j>
-    if !g:gui
-		nmap <silent> <A-b> :BuffergatorToggle<cr>
-		nmap <silent> \b :BufExplorerVerticalSplit<Cr>
-    else
-		nmap <silent> <A-b> :BuffergatorToggle<cr>
-		nmap <silent> \b :BufExplorerVerticalSplit<Cr>
-    endif
+    "if !g:gui
+		"nmap <silent> <A-b> :BuffergatorToggle<cr>
+		"nmap <silent> \b :BufExplorerVerticalSplit<Cr>
+    "else
+    "endif
+	nmap <silent> <A-b> :BuffergatorToggle<cr>
+	nmap <silent> \b :BufExplorerVerticalSplit<Cr>
+	
     nmap <silent> <A-h> 0
     nmap <silent> <A-l> $
     nmap <silent> <A-w> <C-w>q
@@ -312,19 +313,19 @@ set ignorecase
 
 
 "########## Final options and Look for vimrc.local file ########## 
-  if !g:gui 
-    if g:os=='Windows'
-      set fileformat=dos
-      if filereadable(expand("~/_vimrc.local"))
-        source ~/_vimrc.local
-      endif
-    elseif g:os=="Linux" || g:os=="osx"
-      set fileformat=unix
-      if filereadable(expand("~/.vimrc.local"))
-        source ~/.vimrc.local
-      endif
-    endif 
-  endif
+  "if !g:gui 
+    "if g:os=='Windows'
+      "set fileformat=dos
+      "if filereadable(expand("~/_vimrc.local"))
+        "source ~/_vimrc.local
+      "endif
+    "elseif g:os=="Linux" || g:os=="osx"
+      "set fileformat=unix
+      "if filereadable(expand("~/.vimrc.local"))
+        "source ~/.vimrc.local
+      "endif
+    "endif 
+  "endif
 
 
 "########## Function Definitions ##########
