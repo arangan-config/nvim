@@ -30,6 +30,7 @@ set ignorecase
   filetype indent on
   syntax on " ######  turn on syntax highlighting
   set cursorline " #### highlight the current line which the cursor is sitting
+  highlight CursorLine ctermbg=darkgrey ctermfg=white cterm=none
   set number
 
 "########## Set the status line ########## 
