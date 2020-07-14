@@ -55,6 +55,7 @@ augroup END
 	set fileformats=unix,dos,mac
 	set splitbelow
 	set splitright	
+  set confirm "<-- makes it easier to discard buffers
 	filetype indent plugin on
 	set noerrorbells visualbell t_vb=
 	autocmd GUIEnter * set visualbell t_vb=
@@ -134,20 +135,7 @@ augroup END
 
     nmap <silent> <A-h> 0
     nmap <silent> <A-l> $
-    nmap <silent> <A-w> <C-w>q  "<-- close the current split window
 	
-    nmap <silent> <C-Up> <A-k>
-    nmap <silent> <C-Down> <A-j>
-	
-    "if !g:gui
-		"nmap <silent> <A-b> :BuffergatorToggle<cr>
-		"nmap <silent> \b :BufExplorerVerticalSplit<Cr>
-    "else
-    "endif
-    "nmap <silent> <A-b> :BuffergatorToggle<cr>
-    "nmap <silent> \b :BufExplorerVerticalSplit<Cr>
-	
-    
     inoremap <C-Backspace> <C-o>x
     "nmap <silent> <C-a> :call IncrementCharacter(getline(".")[col(".") - 1])<cr>
 
@@ -157,16 +145,26 @@ augroup END
     inoremap <A-r> <C-o>:reg<CR>
     nnoremap <silent> <A-m> :marks<cr>
 
-    nnoremap <A-b> :ls<CR>:b 
+    "Show all buffers and ready to choose any buffer
+    nnoremap <A-b> :buffers<CR>:b 
+
+    "Open a new buffer
+    nnoremap <A-t> :enew<CR> 
+
+    "Close/Wipe the current buffer
+    nmap <silent> <A-w> :bwipe<CR>  
+
 " }}}
 
 "[ Control Keys ] {{{
-	nnoremap <silent> <C-\> :set list!<CR>
-	" If Ctrl+u or Ctrl+e is pressed in insert mode, then Esc and u will
-	" bring back what was accidently deleted
-	inoremap <C-u> <C-g>u<C-u>
-	inoremap <C-w> <C-g>u<C-w>
+    nnoremap <C-H> :echo "Control H pressed"
+    nnoremap <silent> <C-\> :set list!<CR>
+    " If Ctrl+u or Ctrl+e is pressed in insert mode, then Esc and u will
+    " bring back what was accidently deleted
+    inoremap <C-u> <C-g>u<C-u>
+    inoremap <C-w> <C-g>u<C-w>
 
+    nnoremap <silent> <C-q> <C-w>o "close the split window
     "Map the Control H J K L keys to jump to windows easily
     nnoremap <C-j> <C-w>j
     inoremap <C-j> <C-o><C-w>j
@@ -181,9 +179,9 @@ augroup END
     inoremap <C-h> <C-o><C-w>h
     xnoremap <C-h> <C-w>h
 
-	"Command-line editing mappings
-	:cnoremap <C-l> <Right>
-	:cnoremap <C-h> <Left>
+    "Command-line editing mappings
+    :cnoremap <C-l> <Right>
+    :cnoremap <C-h> <Left>
 " }}}
 
 "[ My Mappings ] {{{
@@ -205,10 +203,14 @@ augroup END
 	inoremap <C-S-Enter> <C-o>mT<C-o>O<C-o>`T
 
   "Switch Buffers
-  nnoremap <silent> <C-Tab> :bnext<CR>
-  nnoremap <silent> <C-S-Tab> :bprev<CR>
-  inoremap <silent> <C-Tab> <Esc>:bnext<CR>
-  inoremap <silent> <C-S-Tab> <Esc>:bprev<CR>
+  nnoremap <silent> <C-Tab> :b#<CR>
+  inoremap <silent> <C-Tab> <Esc>:b#<CR>
+  xnoremap <silent> <C-Tab> :b#<CR>
+  
+  nnoremap <silent> <C-p> :bprev<CR>
+  nnoremap <silent> <C-n> :bnext<CR>
+  inoremap <silent> <C-p> <Esc>:bprev<CR>
+  inoremap <silent> <C-n> <Esc>:bnext<CR>
 " }}}
 
 " [ Fold Expressions ] {{{
