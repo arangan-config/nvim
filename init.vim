@@ -26,12 +26,19 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 " }}}
 
 " [ Look and Feel ] {{{
-	set cursorline      " <-- highlight the current line which the cursor is sitting
-	set relativenumber  " <-- set relative line numbers
-	syntax on           " <-- turn on syntax highlighting
+	set cursorline              " <-- highlight the current line which the cursor is sitting
+	set number relativenumber   " <-- set hybrid line numbers
+	syntax on                   " <-- turn on syntax highlighting
 " }}}
 
 " [ Basic Options ] {{{
@@ -106,7 +113,7 @@ augroup END
 			nnoremap <Leader>h :%s//<C-r><C-w><C-b><Right><Right><Right>
 			xnoremap <Leader>s y:%s/<C-R>"/
 		" }}}
-	" }}}
+    " }}}
 " }}}
 
 "[ Function Keys ] {{{ 
@@ -118,18 +125,18 @@ augroup END
 "[ Alt Keys ] {{{
     nnoremap <A-z> :echo 'Alt z'<CR>
 
-	nnoremap <silent> <A-j> :m .+1<CR>==
-	nnoremap <silent> <A-k> :m .-2<CR>==
-	inoremap <silent> <A-j> <Esc>:m .+1<CR>==gi
-	inoremap <silent> <A-k> <Esc>:m .-2<CR>==gi
-	vnoremap <silent> <A-j> :m '>+1<CR>gv=gv
-	vnoremap <silent> <A-k> :m '<-2<CR>gv=gv
+    nnoremap <silent> <A-j> :m .+1<CR>==
+    nnoremap <silent> <A-k> :m .-2<CR>==
+    inoremap <silent> <A-j> <Esc>:m .+1<CR>==gi
+    inoremap <silent> <A-k> <Esc>:m .-2<CR>==gi
+    vnoremap <silent> <A-j> :m '>+1<CR>gv=gv
+    vnoremap <silent> <A-k> :m '<-2<CR>gv=gv
 
     nmap <silent> <A-h> 0
     nmap <silent> <A-l> $
     nmap <silent> <A-w> <C-w>q  "<-- close the current split window
 	
-	nmap <silent> <C-Up> <A-k>
+    nmap <silent> <C-Up> <A-k>
     nmap <silent> <C-Down> <A-j>
 	
     "if !g:gui
@@ -137,18 +144,20 @@ augroup END
 		"nmap <silent> \b :BufExplorerVerticalSplit<Cr>
     "else
     "endif
-	"nmap <silent> <A-b> :BuffergatorToggle<cr>
-	"nmap <silent> \b :BufExplorerVerticalSplit<Cr>
+    "nmap <silent> <A-b> :BuffergatorToggle<cr>
+    "nmap <silent> \b :BufExplorerVerticalSplit<Cr>
 	
     
     inoremap <C-Backspace> <C-o>x
     "nmap <silent> <C-a> :call IncrementCharacter(getline(".")[col(".") - 1])<cr>
 
-  "Show the registers and marks
+    "Show the registers and marks
     nnoremap <A-r> :registers<CR>
     xnoremap <A-r> :<C-u>reg<CR>:normal gv
     inoremap <A-r> <C-o>:reg<CR>
     nnoremap <silent> <A-m> :marks<cr>
+
+    nnoremap <A-b> :ls<CR>:b 
 " }}}
 
 "[ Control Keys ] {{{
@@ -194,6 +203,12 @@ augroup END
 	nnoremap <C-S-Enter> mTO<Esc>`T
 	inoremap <C-Enter> <C-o>mT<C-o>o<C-o>`T
 	inoremap <C-S-Enter> <C-o>mT<C-o>O<C-o>`T
+
+  "Switch Buffers
+  nnoremap <silent> <C-Tab> :bnext<CR>
+  nnoremap <silent> <C-S-Tab> :bprev<CR>
+  inoremap <silent> <C-Tab> <Esc>:bnext<CR>
+  inoremap <silent> <C-S-Tab> <Esc>:bprev<CR>
 " }}}
 
 " [ Fold Expressions ] {{{
@@ -207,7 +222,7 @@ augroup END
 	set smarttab
 " }}}
 
-"[ Turn on/off Certain Plugins and theie default key mappings ] {{{ 
+"[ Turn on/off Certain Plugins and their default key mappings ] {{{ 
     "nnoremap <silent> <F10> :TagbarOpenAutoClose<CR>
     "nnoremap <silent> <F9> :TagbarToggle<CR>
     "nnoremap <silent> <F8> :TlistToggle<CR>
