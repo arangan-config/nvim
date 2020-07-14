@@ -96,7 +96,7 @@ augroup END
 		nnoremap <Space> <nop>
 		"map <Leader>b :CtrlPBuffer<CR>
 		"map <Leader>m :CtrlPMRUFiles<CR>
-		map <Leader>d "_d
+		map <Leader>d "_dd
 		noremap <Leader>p "+p
 		noremap <Leader>P "+P
 		xnoremap <Leader>y "+y:echo "Copied to system clipboard"<CR>
