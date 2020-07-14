@@ -165,7 +165,8 @@ augroup END
     inoremap <C-u> <C-g>u<C-u>
     inoremap <C-w> <C-g>u<C-w>
 
-    nnoremap <silent> <C-q> <C-w>o "close the split window
+    "close the split window
+    nnoremap <silent> <C-q> <C-w>o
     "Map the Control H J K L keys to jump to windows easily
     nnoremap <C-j> <C-w>j
     inoremap <C-j> <C-o><C-w>j

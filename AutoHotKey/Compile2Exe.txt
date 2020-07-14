@@ -1,0 +1,1 @@
+Ahk2Exe.exe /in nvim.ahk /out nvim.exe /icon Nvim.ico /bin "Unicode 64-bit.bin"
