@@ -14,7 +14,7 @@ call plug#begin(join([g:vimDirectory, 'plugins'],''))
 	
 	" On-demand loading	
 	"Plug 'https://github.com/scrooloose/nerdtree.git', { 'on':  'NERDTreeToggle' }
-	"Plug 'https://github.com/jeetsukumaran/vim-buffergator.git', { 'on': 'BuffergatorToggle' }
+	Plug 'https://github.com/jeetsukumaran/vim-buffergator.git', { 'on': 'BuffergatorToggle' }
 	"Plug 'https://github.com/jlanzarotta/bufexplorer.git', { 'on': 'BufExplorerVerticalSplit' }
 	"Plug 'https://github.com/kien/ctrlp.vim.git', { 'on': ['CtrlPBuffer', 'CtrlPMRUFiles'] }		
 	
@@ -228,9 +228,12 @@ augroup END
     "nnoremap <silent> <F10> :TagbarOpenAutoClose<CR>
     "nnoremap <silent> <F9> :TagbarToggle<CR>
     "nnoremap <silent> <F8> :TlistToggle<CR>
-	"let g:buffergator_suppress_keymaps = 1
+    
     "let g:buffergator_autoexpand_on_split = 0 "disable resizing when calling buffergator
-    "let g:bufExplorerDisableDefaultKeyMapping=1 "disable this otherwise ,Leader B gets in the way
+	  let g:buffergator_suppress_keymaps = 1
+    let g:buffergator_viewport_split_policy="B"
+    let g:buffergator_hsplit_size="6"
+    nmap <silent> <Leader>b :BuffergatorToggle<cr>
 " }}}
 
 "[ Retain the last position in the document ] {{{ 
