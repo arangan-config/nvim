@@ -50,6 +50,7 @@ augroup END
 	set switchbuf=useopen,usetab,newtab
 	set encoding=utf-8
 	set termencoding=utf-8
+  set textwidth=140
 	set autochdir
 	"set fileformat=unix
 	set fileformats=unix,dos,mac
@@ -149,7 +150,7 @@ augroup END
     nnoremap <A-b> :buffers<CR>:b 
 
     "Open a new buffer
-    nnoremap <A-t> :enew<CR> 
+    nnoremap <silent> <A-t> :enew<CR> 
 
     "Close/Wipe the current buffer
     nmap <silent> <A-w> :bwipe<CR>  
@@ -374,4 +375,31 @@ augroup END
       "endif
     "endif 
   "endif
+" }}}
+
+" [ Save and Restore a session ] {{{
+    " This will only save and restore buffers mapping to real files. Not in memory, unsaved buffers
+    function! MakeSession()
+      let b:sessiondir = $HOME . "\\appdata\\local\\nvim-data\\sessions"
+      if (filewritable(b:sessiondir) != 2)
+        exe 'silent !mkdir -p ' b:sessiondir
+        redraw!
+      endif
+      let b:filename = b:sessiondir . '\\session.vim'
+      exe "mksession! " . b:filename
+    endfunction
+
+    function! LoadSession()
+      let b:sessiondir = $HOME . "\\appdata\\local\\nvim-data\\sessions"
+      let b:sessionfile = b:sessiondir . "\\session.vim"
+      if (filereadable(b:sessionfile))
+        exe 'source ' b:sessionfile
+      else
+        echo "No session loaded."
+      endif
+    endfunction
+
+    "au VimEnter * nested :call LoadSession()
+    "au VimLeave * :call MakeSession()
+
 " }}}
