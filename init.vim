@@ -268,6 +268,51 @@ augroup END
   endfunction
 " }}}
 
+" [ Lightline plugin customization ] {{{
+
+    set laststatus=2  " this might be required by this plugin
+    set noshowmode "<-- this hides the current mode in the bottom-most status bar as its already being show in the lightline bar
+
+" \ 'colorscheme': 'wombat',
+    let g:lightline = {
+      \ 'active': {
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'filetype', 'fileencoding', 'charvaluehex','fileformat' ] ]
+      \ },
+      \ 'component': {
+      \   'charvaluehex': '0x%B'
+      \ },
+      \ }
+
+" "}}}
+
+" [ Save and Restore a session ] {{{
+    " This will only save and restore buffers mapping to real files. Not in memory, unsaved buffers
+    function! MakeSession()
+      let b:sessiondir = $HOME . "\\appdata\\local\\nvim-data\\sessions"
+      if (filewritable(b:sessiondir) != 2)
+        exe 'silent !mkdir -p ' b:sessiondir
+        redraw!
+      endif
+      let b:filename = b:sessiondir . '\\session.vim'
+      exe "mksession! " . b:filename
+    endfunction
+
+    function! LoadSession()
+      let b:sessiondir = $HOME . "\\appdata\\local\\nvim-data\\sessions"
+      let b:sessionfile = b:sessiondir . "\\session.vim"
+      if (filereadable(b:sessionfile))
+        exe 'source ' b:sessionfile
+      else
+        echo "No session loaded."
+      endif
+    endfunction
+
+    "au VimEnter * nested :call LoadSession()
+    "au VimLeave * :call MakeSession()
+
+" }}}
 
 " ^^^^^^^^^^^^^ TODO -- Need to refine these and throw away the ones not needed ^^^^^^^^^^^^^^^ {{{
      
@@ -378,29 +423,3 @@ augroup END
   "endif
 " }}}
 
-" [ Save and Restore a session ] {{{
-    " This will only save and restore buffers mapping to real files. Not in memory, unsaved buffers
-    function! MakeSession()
-      let b:sessiondir = $HOME . "\\appdata\\local\\nvim-data\\sessions"
-      if (filewritable(b:sessiondir) != 2)
-        exe 'silent !mkdir -p ' b:sessiondir
-        redraw!
-      endif
-      let b:filename = b:sessiondir . '\\session.vim'
-      exe "mksession! " . b:filename
-    endfunction
-
-    function! LoadSession()
-      let b:sessiondir = $HOME . "\\appdata\\local\\nvim-data\\sessions"
-      let b:sessionfile = b:sessiondir . "\\session.vim"
-      if (filereadable(b:sessionfile))
-        exe 'source ' b:sessionfile
-      else
-        echo "No session loaded."
-      endif
-    endfunction
-
-    "au VimEnter * nested :call LoadSession()
-    "au VimLeave * :call MakeSession()
-
-" }}}
