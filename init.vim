@@ -195,8 +195,12 @@ augroup END
 	xnoremap p p:let @" = @0<cr>:<bs>
 	
 	"remapping the default keys eg, Q and q keys
-	"nmap Q q " Map the original q to capital Q for recording macros
-	nnoremap <silent> Q :exe 'norm!'.(virtcol("$")/2)."<bar>"<cr>
+  "Map the original q to capital Q for recording macros
+	nnoremap Q q
+  nnoremap q <Nop>
+
+  " Map the Q key to move to the middle of current line
+	"nnoremap <silent> Q :exe 'norm!'.(virtcol("$")/2)."<bar>"<cr>
 	
 	"Adding a new line above and below
 	nnoremap <C-Enter> mTo<Esc>`T
