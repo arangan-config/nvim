@@ -1,6 +1,9 @@
 " z shift M -- will fold all levels
-
-let g:vimDirectory = $HOME . '\appdata\Local\nvim\'
+if has("mac") || has("unix")
+  let g:vimDirectory = $HOME . '/.config/nvim/'
+else
+  let g:vimDirectory = $HOME . '\appdata\Local\nvim\'
+endif
 
 " [ Vim Plug ] {{{
 call plug#begin(join([g:vimDirectory, 'plugins'],''))
