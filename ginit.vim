@@ -7,7 +7,8 @@ call GuiWindowMaximized(1)
   "GuiFont! Cousine:h12
   "GuiFont! FuraCode NF:h11
   "GuiFont! RobotoMono NF:h11
-  GuiFont! RobotoMono Nerd Font:h11
+  "GuiFont! RobotoMono Nerd Font:h11
+  GuiFont! Roboto Mono:h11
 " }}}
 
 " [ Colorscheme ]  {{{
