@@ -1,5 +1,6 @@
 local Opt = vim.opt  -- options
 local Wo = vim.wo    -- window options
+local Global = vim.g
 
 --[[ Look and Feel ]]
 Opt.guifont = "Cousine:h16"
@@ -48,6 +49,10 @@ vim.cmd([[
   endif
 ]])
 
+    Global["buffergator_suppress_keymaps"] = 1
+    Global["buffergator_viewport_split_policy"]="B"
+    Global["buffergator_hsplit_size"]=6
+    Global["buffergator_window_statusline"]= 0
 --[[
 
 
