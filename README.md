@@ -4,6 +4,9 @@ Use either init.vim or init.lua but not both as neovim will complain about confl
 
 Lua is the better option as it runs much faster than traditional vimscript.
 
+To use Lua, nothing needs to be done. Just compile the packer and enjoy!
+To use Vimscript, rename _init.vim to init.vim and delete init.lua
+
 ## Lua
 :PackerCompile
 
