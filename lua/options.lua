@@ -49,34 +49,19 @@ vim.cmd([[
   endif
 ]])
 
-    Global["buffergator_suppress_keymaps"] = 1
-    Global["buffergator_viewport_split_policy"]="B"
-    Global["buffergator_hsplit_size"]=6
-    Global["buffergator_window_statusline"]= 0
+Global["buffergator_suppress_keymaps"] = 1
+Global["buffergator_viewport_split_policy"]="B"
+Global["buffergator_hsplit_size"]=6
+Global["buffergator_window_statusline"]= 0
+
+
 --[[
-
-
-
 
 "[ Function Keys ] {{{
     "map <F2> :NERDTreeToggle<CR>
     "let NerdTreeQuitOnOpen = 1
     "let NerdTreeIgnore=['\.pyc$','\~$']
 " }}}
-
-
-"[ Turn on/off Certain Plugins and their default key mappings ] {{{
-    "nnoremap <silent> <F10> :TagbarOpenAutoClose<CR>
-    "nnoremap <silent> <F9> :TagbarToggle<CR>
-    "nnoremap <silent> <F8> :TlistToggle<CR>
-
-    "let g:buffergator_autoexpand_on_split = 0 "disable resizing when calling buffergator
-	  let g:buffergator_suppress_keymaps = 1
-    let g:buffergator_viewport_split_policy="B"
-    let g:buffergator_hsplit_size="6"
-    nmap <silent> <Leader>b :BuffergatorToggle<cr>
-" }}}
-
 
 " \ 'colorscheme': 'wombat',
     let g:lightline = {
@@ -127,8 +112,6 @@ vim.cmd([[
   "autocmd BufWinEnter .vimrc silent loadview
   autocmd BufWinLeave .* mkview
   autocmd BufWinEnter .* silent loadview
-
-
 
 
 "########## Operating System Specific Options ##########
