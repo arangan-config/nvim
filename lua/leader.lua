@@ -28,7 +28,7 @@ Keymap.set('n', '<Leader>h', ':%s//<C-r><C-w><C-b><Right><Right><Right>', {norem
 Keymap.set('x', '<Leader>s', 'y:%s/<C-R>"/', {noremap = true})
 
 
-Keymap.set({'n','x'}, '<Leader>b',':BuffergatorToggle<cr>', {noremap = true})
+Keymap.set({'n','x'}, '<Leader>b',':BuffergatorToggle<cr>', {noremap = true,silent = true})
 
 --TODO cannot place the <leader> inside that exmode -- currently replaced by space ( leader )
 --Keymap.set('n', '<Leader>S', ':map <Leader><cr>', {noremap = true})   -- Print the leader key mappings
