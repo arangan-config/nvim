@@ -47,12 +47,34 @@ require('options')
 require('leader')
 require('shortcuts')
 
+if vim.g["neovide"] then
+    vim.opt.guifont = "RobotoMono Nerd Font:h12"
+    vim.g["neovide_remember_window_size"] = true
+    vim.g["neovide_hide_mouse_when_typing"] = true
+elseif vim.g["gonvim_running"] then
+    vim.opt.guifont = "Fira Code Regular Nerd Font Complete:h12"
+else
+    vim.opt.guifont = "Cousine Nerd Font:h15"
+end
+
+vim.cmd([[
+
+"if exists("g:neovide")
+      "call GuiWindowMaximized(1)
+      "colorscheme wombat256grf
+      "set guifont=Roboto\ Mono:h11
+      "let g:neovide_remember_window_size = v:true
+      "let g:neovide_hide_mouse_when_typing = v:true
+"endif
+
+"if exists("g:gonvim_running") && g:gonvim_running == 1
+    "set guifont=JetBrains\ Mono:h11
+"endif
+
+]])
+
 --[[
-
-print(vim.opt.cursorline:get())
-    
-vim.o.showcmd = true
-
-vim.opt.guifont = 'Cousine:h16' 
-
+"print(vim.opt.cursorline:get())
+"vim.o.showcmd = true
+"vim.opt.guifont = 'Cousine:h16'
 ]]

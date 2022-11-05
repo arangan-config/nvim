@@ -3,7 +3,7 @@ local Wo = vim.wo    -- window options
 local Global = vim.g
 
 --[[ Look and Feel ]]
-Opt.guifont = "Cousine:h16"
+--Opt.guifont = "Cousine:h16"
 
 Opt.cursorline = true      -- Highlight the current line which the cursor is sitting
 Wo.number = true
@@ -53,6 +53,7 @@ Global["buffergator_suppress_keymaps"] = 1
 Global["buffergator_viewport_split_policy"]="B"
 Global["buffergator_hsplit_size"]=6
 Global["buffergator_window_statusline"]= 0
+
 
 
 --[[
